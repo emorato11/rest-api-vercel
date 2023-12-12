@@ -1,6 +1,6 @@
-import { validateMovie, validatePartialMovie } from '../schemas/movies.js'
+const { validateMovie, validatePartialMovie } = require('../schemas/movies')
 
-export class MovieController {
+class MovieController {
   constructor ({ movieModel }) {
     this.movieModel = movieModel
   }
@@ -58,3 +58,5 @@ export class MovieController {
     return res.json({ message: 'Movie deleted!' })
   }
 }
+
+module.exports = { MovieController }

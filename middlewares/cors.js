@@ -1,11 +1,11 @@
-import cors from 'cors'
+const cors = require('cors')
 
 const ACCEPTED_ORIGINS = [
   'http://localhost:8080',
   'http://localhost:1234'
 ]
 
-export const corsMiddleware = ({ acceptedOrigins = ACCEPTED_ORIGINS } = {}) => cors({
+const corsMiddleware = ({ acceptedOrigins = ACCEPTED_ORIGINS } = {}) => cors({
   origin: (origin, callback) => {
     if (acceptedOrigins.includes(origin)) {
       return callback(null, true)
@@ -18,3 +18,7 @@ export const corsMiddleware = ({ acceptedOrigins = ACCEPTED_ORIGINS } = {}) => c
     return callback(new Error('Not allowed by CORS'))
   }
 })
+
+module.exports = {
+  corsMiddleware
+}

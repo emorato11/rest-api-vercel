@@ -1,5 +1,5 @@
-import 'dotenv/config'
-import mongoose from 'mongoose'
+require('dotenv').config()
+const mongoose = require('mongoose')
 
 const { Schema, model } = mongoose
 
@@ -52,7 +52,7 @@ movieSchema.set('toJSON', {
 
 const Movie = model('Movie', movieSchema)
 
-export class MovieModel {
+class MovieModel {
   static getAll = async ({ genre }) => {
     const payload = genre ? { genre } : {}
     try {
@@ -107,3 +107,5 @@ export class MovieModel {
     }
   }
 }
+
+module.exports = { MovieModel }
